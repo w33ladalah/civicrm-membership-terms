@@ -1,10 +1,9 @@
 <?xml version="1.0"?>
 <menu>
   <item>
-    <path>civicrm/termspage</path>
+    <path>civicrm/membership-terms</path>
     <page_callback>CRM_Membershipterms_Page_TermsPage</page_callback>
-    <title>Terms or Periods</title>
-     <access_arguments>access CiviMember</access_arguments>
-     <component>CiviMember</component>
+    <title>Terms Page</title>
+    <access_arguments>administer CiviCRM</access_arguments>
   </item>
 </menu>
