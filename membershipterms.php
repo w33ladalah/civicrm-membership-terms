@@ -140,21 +140,15 @@ function membershipterms_civicrm_preProcess($formName, &$form) {
  *
  */
 function membershipterms_civicrm_navigationMenu(&$menu) {
-  $administerMenuId = CRM_Core_DAO::getFieldValue('CRM_Core_BAO_Navigation', 'Memberships', 'id', 'name');
-
-  // skip adding menu if there is no administer menu
-  if ($administerMenuId) {
-    // get the maximum key under adminster menu
-    $maxKey = max( array_keys($params[$administerMenuId]['child']));
-    _membershipterms_civix_insert_navigation_menu($menu, NULL, array(
-      'label' => 'Membership Terms',
-      'name' => 'membership_terms',
-      'url' => 'civicrm/membership-terms',
-      'permission' => 'access CiviCRM, access CiviReport, access CiviContribute',
-      'operator' => 'OR',
-      'separator' => 0,
-    ));
-  }
+  // Create child menu under Memberships menu
+  _membershipterms_civix_insert_navigation_menu($menu, 'Memberships', array(
+    'label' => 'Membership Terms',
+    'name' => 'membership_terms',
+    'url' => 'civicrm/membership-terms',
+    'permission' => 'administer CiviCRM',
+    'operator' => 'OR',
+    'separator' => 0,
+  ));
 
   _membershipterms_civix_navigationMenu($menu);
 }
