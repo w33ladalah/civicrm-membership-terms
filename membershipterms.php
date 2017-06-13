@@ -138,14 +138,23 @@ function membershipterms_civicrm_preProcess($formName, &$form) {
  *
  * @link http://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_navigationMenu
  *
+ */
 function membershipterms_civicrm_navigationMenu(&$menu) {
-  _membershipterms_civix_insert_navigation_menu($menu, NULL, array(
-    'label' => ts('The Page', array('domain' => 'com.hendrowibowo.membershipterms')),
-    'name' => 'the_page',
-    'url' => 'civicrm/the-page',
-    'permission' => 'access CiviReport,access CiviContribute',
-    'operator' => 'OR',
-    'separator' => 0,
-  ));
+  $administerMenuId = CRM_Core_DAO::getFieldValue('CRM_Core_BAO_Navigation', 'Memberships', 'id', 'name');
+
+  // skip adding menu if there is no administer menu
+  if ($administerMenuId) {
+    // get the maximum key under adminster menu
+    $maxKey = max( array_keys($params[$administerMenuId]['child']));
+    _membershipterms_civix_insert_navigation_menu($menu, NULL, array(
+      'label' => 'Membership Terms',
+      'name' => 'membership_terms',
+      'url' => 'civicrm/membership-terms',
+      'permission' => 'access CiviCRM, access CiviReport, access CiviContribute',
+      'operator' => 'OR',
+      'separator' => 0,
+    ));
+  }
+
   _membershipterms_civix_navigationMenu($menu);
-} // */
+}
