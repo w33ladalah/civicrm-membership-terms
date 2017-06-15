@@ -2,17 +2,18 @@
 
 <table>
   <base>CRM/Membershipterms</base>
-  <class>MembershipsTerms</class>
-  <name>civicrm_membershipsterms</name>
-  <comment>FIXME</comment>
+  <class>MembershipTerms</class>
+  <name>civicrm_membership_terms</name>
+  <comment>Record a membership terms</comment>
   <add>4.4</add>
   <log>true</log>
 
   <field>
     <name>id</name>
+    <title>Membership Terms ID</title>
     <type>int unsigned</type>
     <required>true</required>
-    <comment>Unique MembershipsTerms ID</comment>
+    <comment>Unique MembershipTerms ID</comment>
     <add>4.4</add>
   </field>
   <primaryKey>
@@ -21,14 +22,52 @@
   </primaryKey>
 
   <field>
-    <name>contact_id</name>
+    <name>nth_term</name>
+    <title>Number of Term</title>
     <type>int unsigned</type>
-    <comment>FK to Contact</comment>
+    <required>true</required>
+    <comment>Number of Term</comment>
+    <default>1</default>
+    <add>4.4</add>
+  </field>
+
+  <field>
+    <name>start_date</name>
+    <title>Term Start Date</title>
+    <type>datetime</type>
+    <required>true</required>
+    <comment>Term Start Date</comment>
+    <add>4.4</add>
+  </field>
+
+  <field>
+    <name>end_date</name>
+    <title>Term End Date</title>
+    <type>datetime</type>
+    <required>true</required>
+    <comment>Term End Date</comment>
+    <add>4.4</add>
+  </field>
+
+  <field>
+    <name>nth_term</name>
+    <title>Number of Term</title>
+    <type>int unsigned</type>
+    <required>true</required>
+    <comment>Number of Term</comment>
+    <default>1</default>
+    <add>4.4</add>
+  </field>
+
+  <field>
+    <name>membership_id</name>
+    <type>int unsigned</type>
+    <comment>Foreign Key to Membership</comment>
     <add>4.4</add>
   </field>
   <foreignKey>
-    <name>contact_id</name>
-    <table>civicrm_contact</table>
+    <name>membership_id</name>
+    <table>civicrm_membership</table>
     <key>id</key>
     <add>4.4</add>
     <onDelete>CASCADE</onDelete>
