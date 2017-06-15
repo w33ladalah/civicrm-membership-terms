@@ -152,3 +152,27 @@ function membershipterms_civicrm_navigationMenu(&$menu) {
 
   _membershipterms_civix_navigationMenu($menu);
 }
+
+/**
+ * Implementation of hook_civicrm_entityTypes
+ */
+function membershipterms_civicrm_entityTypes(&$entityTypes) {
+  $entityTypes[] = array(
+    'name'  => 'MembershipTerms',
+    'class' => 'CRM_Membershipterms_DAO_MembershipTerms',
+    'table' => 'civicrm_membership_terms',
+  );
+}
+
+/**
+ * Implementation of hook_civicrm_post().
+ *
+ * @link https://docs.civicrm.org/dev/en/master/hooks/hook_civicrm_post/
+ *
+ */
+function membershipterms_civicrm_post($op, $objectName, $objectId, &$objectRef) {
+  if ($objectName != "Membership" || $op != "edit") {
+    return;
+  }
+}
+
