@@ -1,5 +1,7 @@
 <?php
 
+require_once 'CRM/Membershipterms/BAO/MembershipTerms.php';
+
 /**
  * MembershipsTerms.create API specification (optional)
  * This is used for documentation and validation.
