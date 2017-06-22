@@ -1,4 +1,5 @@
 <?php
+require_once 'CRM/Membershipterms/DAO/MembershipTerms.php';
 
 class CRM_Membershipterms_BAO_MembershipTerms extends CRM_Membershipterms_DAO_MembershipTerms {
 
