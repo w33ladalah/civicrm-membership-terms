@@ -4,7 +4,7 @@
   <base>CRM/Membershipterms</base>
   <class>MembershipTerms</class>
   <name>civicrm_membership_terms</name>
-  <comment>Record a membership terms</comment>
+  <comment>Record membership terms</comment>
   <add>4.4</add>
   <log>true</log>
 
