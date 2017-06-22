@@ -24,6 +24,7 @@
 | see the CiviCRM license FAQ at http://civicrm.org/licensing        |
 +--------------------------------------------------------------------+
 */
+
 /**
  * @package CRM
  * @copyright CiviCRM LLC (c) 2004-2017
@@ -34,52 +35,61 @@
  */
 require_once 'CRM/Core/DAO.php';
 require_once 'CRM/Utils/Type.php';
+
 /**
  * CRM_Membershipterms_DAO_MembershipTerms constructor.
  */
 class CRM_Membershipterms_DAO_MembershipTerms extends CRM_Core_DAO {
+
   /**
    * Static instance to hold the table name.
    *
    * @var string
    */
   static $_tableName = 'civicrm_membership_terms';
+
   /**
    * Should CiviCRM log any modifications to this table in the civicrm_log table.
    *
    * @var boolean
    */
-  static $_log = true;
+  static $_log = FALSE;
+
   /**
    * Unique MembershipTerms ID
    *
    * @var int unsigned
    */
   public $id;
+
   /**
    * Number of Term
    *
    * @var int unsigned
    */
   public $nth_term;
+
   /**
    * Term Start Date
    *
    * @var datetime
    */
   public $start_date;
+
   /**
    * Term End Date
    *
    * @var datetime
    */
   public $end_date;
+
   /**
    * Foreign Key to Membership
    *
    * @var int unsigned
    */
   public $membership_id;
+
   /**
    * Class constructor.
    */
@@ -87,6 +97,7 @@ class CRM_Membershipterms_DAO_MembershipTerms extends CRM_Core_DAO {
     $this->__table = 'civicrm_membership_terms';
     parent::__construct();
   }
+
   /**
    * Returns foreign keys and entity references.
    *
@@ -101,6 +112,7 @@ class CRM_Membershipterms_DAO_MembershipTerms extends CRM_Core_DAO {
     }
     return Civi::$statics[__CLASS__]['links'];
   }
+
   /**
    * Returns all the column names of this table
    *

@@ -1,6 +1,7 @@
 <?php
 
 require_once 'membershipterms.civix.php';
+require_once 'helper/functions.php';
 
 /**
  * Implements hook_civicrm_config().
@@ -170,9 +171,17 @@ function membershipterms_civicrm_entityTypes(&$entityTypes) {
  * @link https://docs.civicrm.org/dev/en/master/hooks/hook_civicrm_post/
  *
  */
-function membershipterms_civicrm_post($op, $objectName, $objectId, &$objectRef) {
-  if ($objectName != "Membership" || $op != "edit") {
+function membershipterms_civicrm_postProcess($formName, &$form) {
+  if ($formName != "CRM_Member_Form_MembershipRenewal") {
     return;
   }
+
+  print_r($form);
+  // $membershipValues = $form->get
+  $terms = _membershipterms_breakdown_terms($objectRef->start_date, $objectRef->end_date);
+  foreach ($terms as $term) {
+    # code...
+  }
 }
+
 
