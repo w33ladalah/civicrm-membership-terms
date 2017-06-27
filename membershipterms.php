@@ -176,12 +176,12 @@ function membershipterms_civicrm_postProcess($formName, &$form) {
     return;
   }
 
-  print_r($form);
+  // print_r($form);
   // $membershipValues = $form->get
-  $terms = _membershipterms_breakdown_terms($objectRef->start_date, $objectRef->end_date);
-  foreach ($terms as $term) {
+  // $terms = _membershipterms_breakdown_terms($objectRef->start_date, $objectRef->end_date);
+  // foreach ($terms as $term) {
     # code...
-  }
+  // }
 }
 
 

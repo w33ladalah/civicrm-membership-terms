@@ -10,7 +10,6 @@
 
   <field>
     <name>id</name>
-    <title>Membership Terms ID</title>
     <type>int unsigned</type>
     <required>true</required>
     <comment>Unique MembershipTerms ID</comment>
@@ -23,7 +22,6 @@
 
   <field>
     <name>nth_term</name>
-    <title>Number of Term</title>
     <type>int unsigned</type>
     <required>true</required>
     <comment>Number of Term</comment>
@@ -33,7 +31,6 @@
 
   <field>
     <name>start_date</name>
-    <title>Term Start Date</title>
     <type>datetime</type>
     <required>true</required>
     <comment>Term Start Date</comment>
@@ -42,7 +39,6 @@
 
   <field>
     <name>end_date</name>
-    <title>Term End Date</title>
     <type>datetime</type>
     <required>true</required>
     <comment>Term End Date</comment>
@@ -51,7 +47,6 @@
 
   <field>
     <name>nth_term</name>
-    <title>Number of Term</title>
     <type>int unsigned</type>
     <required>true</required>
     <comment>Number of Term</comment>
