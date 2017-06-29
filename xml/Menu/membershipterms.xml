@@ -2,8 +2,8 @@
 <menu>
   <item>
     <path>civicrm/membership-terms</path>
-    <page_callback>CRM_Membershipterms_Page_TermsPage</page_callback>
-    <title>Terms Page</title>
+    <page_callback>CRM_Membershipterms_Page_List</page_callback>
+    <title>Membership Terms</title>
     <access_arguments>administer CiviCRM</access_arguments>
   </item>
 </menu>
