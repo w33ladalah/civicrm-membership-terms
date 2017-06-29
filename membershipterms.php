@@ -171,17 +171,55 @@ function membershipterms_civicrm_entityTypes(&$entityTypes) {
  * @link https://docs.civicrm.org/dev/en/master/hooks/hook_civicrm_post/
  *
  */
-function membershipterms_civicrm_postProcess($formName, &$form) {
-  if ($formName != "CRM_Member_Form_MembershipRenewal") {
+function membershipterms_civicrm_post($op, $objectName, $objectId, &$objectRef) {
+  if ($op != 'edit' && $objectName != 'Membership') {
     return;
   }
 
-  // print_r($form);
-  // $membershipValues = $form->get
-  // $terms = _membershipterms_breakdown_terms($objectRef->start_date, $objectRef->end_date);
-  // foreach ($terms as $term) {
-    # code...
-  // }
+  $terms = _membershipterms_breakdown_terms($objectRef->start_date, $objectRef->end_date);
+  foreach ($terms as $term) {
+    civicrm_api3('MembershipTerms', 'create', array(
+      'nth_term' => $term['nth_term'],
+      'start_date' => $term['start_date'] . ' 00:00:00',
+      'end_date' => $term['end_date'] . ' 23:59:59',
+      'membership_id' => $objectRef->id,
+    ));
+  }
 }
 
+/**
+ * Implementation of hook_civicrm_tabset().
+ *
+ * @link https://docs.civicrm.org/dev/en/master/hooks/hook_civicrm_tabset/
+ *
+ */
+function membershipterms_civicrm_tabset($tabsetName, &$tabs, $context) {
+  if ($tabsetName == 'civicrm/contact/view') {
+    if (!empty($context)) {
+      $contactId = $context['contact_id'];
+      $url = CRM_Utils_System::url(
+               'civicrm/membership-terms',
+               "reset=1&id=$contactId"
+             );
+      $tab['membershipterms'] = array(
+        'title' => ts('Membership Terms'),
+        'url' => $url,
+        'valid' => 1,
+        'active' => 1,
+        'current' => false,
+      );
+    } else {
+      $tab['membershipterms'] = array(
+      'title' => ts('Membership Terms'),
+        'url' => 'civicrm/membership-terms',
+      );
+    }
+
+    // $tabPosition = count($tabs);
+    $tabs = array_merge(
+      $tabs,
+      $tab
+    );
+  }
+}
 
