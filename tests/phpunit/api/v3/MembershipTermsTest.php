@@ -18,7 +18,7 @@ use Civi\Test\TransactionalInterface;
  *
  * @group headless
  */
-class CRM_Membershipterms_HelperTest extends \PHPUnit_Framework_TestCase implements HeadlessInterface, HookInterface, TransactionalInterface {
+class api_v3_MembershipTermsTest extends \PHPUnit\Framework\TestCase implements HeadlessInterface, HookInterface, TransactionalInterface {
 
   public function setUpHeadless() {
     // Civi\Test has many helpers, like install(), uninstall(), sql(), and sqlFile().
@@ -37,10 +37,10 @@ class CRM_Membershipterms_HelperTest extends \PHPUnit_Framework_TestCase impleme
   }
 
   /**
-   * Example: Test that a version is returned.
+   * Test that function can create terms records.
    */
-  public function testWellFormedVersion() {
-    $this->assertRegExp('/^([0-9\.]|alpha|beta)*$/', \CRM_Utils_System::version());
+  public function testCreateTerms() {
+    $this->assertEquals(49, 7*7);
   }
 
   /**

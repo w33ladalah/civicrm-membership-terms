@@ -29,6 +29,12 @@ function cv($cmd, $decode = 'json') {
   if (proc_close($process) !== 0) {
     throw new RuntimeException("Command failed ($cmd):\n$result");
   }
+
+  $includedPath = array(
+    'require_once "'.__DIR__.'/../../helper/functions.php"',
+    'require_once "'.__DIR__.'/../../api/v3/MembershipTerms.php"'
+  );
+
   switch ($decode) {
     case 'raw':
       return $result;
@@ -38,7 +44,7 @@ function cv($cmd, $decode = 'json') {
       if (substr(trim($result), 0, 12) !== "/*BEGINPHP*/" || substr(trim($result), -10) !== "/*ENDPHP*/") {
         throw new \RuntimeException("Command failed ($cmd):\n$result");
       }
-      return $result;
+      return $result.PHP_EOL.implode(';', $includedPath).';';
 
     case 'json':
       return json_decode($result, 1);
