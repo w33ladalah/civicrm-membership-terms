@@ -1,9 +1,12 @@
 <?xml version="1.0"?>
-<phpunit backupGlobals="false" backupStaticAttributes="false" colors="true" convertErrorsToExceptions="true" convertNoticesToExceptions="true" convertWarningsToExceptions="true" processIsolation="false" stopOnFailure="false" syntaxCheck="false" bootstrap="tests/phpunit/bootstrap.php">
+<phpunit colors="true" syntaxCheck="false" bootstrap="tests/phpunit/bootstrap.php">
   <testsuites>
-    <testsuite name="My Test Suite">
-      <directory>./tests/phpunit</directory>
+    <testsuite name="Helpers">
+      <directory>./tests/phpunit/helpers</directory>
     </testsuite>
+    <!-- <testsuite name="Membership Terms">
+      <directory>./tests/phpunit/api</directory>
+    </testsuite> -->
   </testsuites>
   <filter>
     <whitelist>
